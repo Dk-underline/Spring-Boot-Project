@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<body>
+	<section>
+		<div class="card mr-3">
+			<div class="card-body">
+				<h2 class="text-center">Add Contacts</h2>
+				<div class="container-fluid-1 mt-1">
+					<div class="row">
+						<div class="col-md-10 offset-md-1">
+							<form method="post" class="mt-2" enctype="multipart/form-data"
+								th:object="${contact}" th:action="@{/user/process-contact}">
+								<!-- First Input Filed -->
+								<div class="input-group flex-nowrap mb-3">
+									<i class="fa-solid fa-plus input-group-text"></i> <input
+										type="text" class="form-control" name="name" id="firstinput"
+										placeholder="Enter Your Contact Name">
+								</div>
+
+								<!-- Second Input Filed -->
+								<div class="input-group flex-nowrap mb-3">
+									<i class="fa-solid fa-user input-group-text"></i> <input
+										type="text" class="form-control" name="nickname"
+										id="secondinput" placeholder="Enter Your Contact Nick Name">
+								</div>
+
+								<!-- Third Input Filed -->
+								<div class="input-group flex-nowrap mb-3">
+									<i class="fa-solid fa-phone input-group-text"></i> <input
+										type="text" class="form-control" name="number" id="thirdinput"
+										placeholder="Enter Contact Number">
+								</div>
+
+								<!-- Forth Input Filed -->
+								<div class="input-group mb-3">
+									<span class="input-group-text" id="basic-addon1">@</span> <input
+										type="email" class="form-control" placeholder="Email Addresss"
+										name="email" id="forthinput">
+								</div>
+
+								<!-- Fifth Input Filed -->
+								<div class="input-group flex-nowrap mb-3">
+									<i class="fa-solid fa-location-dot input-group-text"></i> <input
+										type="text" class="form-control" name="place" id="fifthinput"
+										placeholder="Enter Contact Type">
+								</div>
+
+								<!-- Sixth Input Filed  -->
+								<div class="input-group flex-nowrap mb-1">
+									<textarea class="form-control" name="description"
+										placeholder="Enter Something About Contact" id="default"
+										rows="10"></textarea>
+								</div>
+								<div class="custom-file">
+									<input type="file" name="profileimage">
+								</div>
+								<div class="text-center">
+									<button type="submit" class="btn btn-success">Submit</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script
+			src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
+			referrerpolicy="origin"></script>
+		<script>
+			tinymce.init({
+				selector : 'textarea#default',
+				width: "870"
+			});
+		</script>
+		<script type="text/javascript">
+		   $(document).ready(()=>{
+			   $(".itme").removeClass("active");
+			   $("#add-link").addClass("active");
+		   });
+		</script>
+	</section>
+</body>
+</html>

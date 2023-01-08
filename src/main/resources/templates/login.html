@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<body>
+	<section class="vh-100 banner">
+		<div class="container text-dark">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div
+						class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5 my-form">
+
+						<form style="width: 23rem;" action="#" th:action="@{/login}" method="post">
+
+							<h3 class="text-center fw-normal mb-3 pb-3"
+								style="letter-spacing: 1px;">LOGIN</h3>
+							<div class="alert alert-danger" th:if="${param.error}">Invalid
+								User and Password</div>
+							<div class="alert alert-success" th:if="${param.logout}">Logout
+								Successfully</div>
+							<div class="form-outline mb-3">
+								<input type="email" id="form2Example18" name="username"
+									class="form-control form-control-lg" /> <label
+									class="form-label" for="form2Example18">Email address</label>
+							</div>
+
+							<div class="form-outline mb-3">
+								<input type="password" id="form2Example28" name="password"
+									class="form-control form-control-lg" /> <label
+									class="form-label" for="form2Example28">Password</label>
+							</div>
+
+							<div class="pt-1 mb-3">
+								<button class="btn btn-info btn-lg btn-block"  type="submit">Login</button>
+							</div>
+
+							<p class="small mb-5 pb-lg-2">
+								<a class="text-muted link-info" href="#!" th:href="@{/forget_password}">Forgot password?</a>
+							</p>
+							<p>
+								Don't have an account? <a th:href="@{/signup/}"
+									class="link-info">Register here</a>
+							</p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

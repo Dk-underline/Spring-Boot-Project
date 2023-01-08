@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<body>
+	<section class="vh-100 banner">
+		<div class="container text-dark">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div
+						class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5 my-form">
+
+						<form style="width: 23rem;" action="#"  th:action="@{/verf_otp}"
+							method="post">
+
+							<h3 class="text-center fw-normal mb-3 pb-3"
+								style="letter-spacing: 1px;">Forget Password</h3>
+							<div class="form-outline mb-3">
+								<input type="password" id="form2Example18" name="otp" required="required"
+									class="form-control form-control-m" placeholder="Enter OTP"/> 
+							</div>
+							<div class="pt-1 mb-3 text-center">
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

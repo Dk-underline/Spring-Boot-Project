@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<body>
+	<section class="vh-100 banner">
+		<div class="container text-dark">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div
+						class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5 my-form">
+
+						<form style="width: 23rem;" action="#" th:action="@{/send_otp}"
+							method="post">
+							<div class="my-form">
+								<div th:if="${session.message}"
+									th:classappend="${session.message.type}" class="alert "
+									role="alert">
+									<p th:text="${session.message.contant}"></p>
+									<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+								</div>
+								</div>
+								<div class="form-outline mb-3">
+									<input type="email" id="form2Example18" name="email"
+										required="required" class="form-control form-control-m"
+										placeholder="Enter Your Email Address" />
+								</div>
+								<div class="pt-1 mb-3 text-center">
+									<button type="submit" class="btn btn-warning">Send OTP</button>
+								</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

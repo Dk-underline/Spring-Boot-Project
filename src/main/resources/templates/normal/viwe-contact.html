@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<body>
+	<section>
+		<div class="card mt-2">
+			<div class="card-body">
+				<h2 class="text-center">Contacts</h2>
+				<div class="search-container my-4">
+					<input onkeyup="search()" id="search-input" type="text" class="form-control"
+						placeholder="Search">
+					<div class="search-result">
+						<!-- Search Results -->
+					</div>
+				</div>
+				<div class="table-responsive">
+				<table class="table">
+					<thead class="table-light">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Name</th>
+							<th scope="col">Number</th>
+							<th scope="col">Email</th>
+							<th scope="col">Contact Type</th>
+							<th scope="col">Action</th>
+						</tr>
+					</thead>
+					</div>
+					<tbody th:each="contact,status : ${list}">
+						<tr>
+							<th scope="row" th:text="${status.index+1}"></th>
+							<td><img class="my_profile" alt=""
+								th:src="@{'/images/'+${contact.imageURL}}"> <span
+								th:text="${contact.name}"></span></td>
+							<td th:text="${contact.number}"></td>
+							<td><a
+								th:href="@{'/user/'+${contact.cId}+'/contact-detail'}"> <span
+									th:text="${contact.email}"></span>
+							</a></td>
+							<td th:text="${contact.place}"></td>
+							<td><a class="btn btn-danger btn-sm me-2"
+								th:href="'/user/delete/'+${contact.cId}">Delete</a>
+								<form class="mt-1"
+									th:action="@{'/user/update-contact/'+${contact.cId}}"
+									method="post">
+									<button type="submit" class="btn btn-primary btn-sm">Update</button>
+								</form></td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- Pagination  -->
+				<nav aria-label="Page navigation example">
+					<ul class="pagination">
+						<li th:if="${currpage != 0}" class="page-item"><a
+							class="page-link"
+							th:href="@{'/user/viwe-contact/'+${currpage-1}}">Previous</a></li>
+
+						<li th:classappend="${currpage==i-1 ? 'active':''}"
+							th:each="i : ${#numbers.sequence(1,total)}" class="page-item"><a
+							class="page-link" th:href="@{'/user/viwe-contact/'+${i-1}}"
+							th:text="${i}"></a></li>
+
+						<li th:if="${currpage+1 != total}" class="page-item"><a
+							class="page-link"
+							th:href="@{'/user/viwe-contact/'+${currpage+1}}">Next</a></li>
+					</ul>
+				</nav>
+
+			</div>
+		</div>
+		<script type="text/javascript">
+		   $(document).ready(()=>{
+			   $(".itme").removeClass("active");
+			   $("#viwe-link").addClass("active");
+		   });
+		</script>
+	</section>
+</body>
+</html>
